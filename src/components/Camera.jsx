@@ -1,6 +1,7 @@
 const Camera = () => {
   let mediaRecorder;
   let recordedChunks = [];
+  let videoElement;
 
   const startRecording = async () => {
     try {
@@ -17,15 +18,22 @@ const Camera = () => {
       mediaRecorder.onstop = () => {
         const blob = new Blob(recordedChunks, { type: "video/webm" });
         const url = URL.createObjectURL(blob);
+        videoElement.src = url;
 
-        // Download the video or perform further operations with the recorded video
         const a = document.createElement("a");
         a.href = url;
         a.download = "recorded-video.webm";
         document.body.appendChild(a);
         a.click();
         recordedChunks = [];
+        document.body.removeChild(a);
       };
+
+      videoElement = document.createElement("video");
+      videoElement.autoplay = true;
+      document.body.appendChild(videoElement);
+
+      videoElement.srcObject = stream;
 
       mediaRecorder.start();
     } catch (error) {
@@ -36,6 +44,8 @@ const Camera = () => {
   const stopRecording = () => {
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
       mediaRecorder.stop();
+      videoElement.srcObject = null;
+      document.body.removeChild(videoElement);
     }
   };
 
@@ -45,7 +55,7 @@ const Camera = () => {
         <strong>Camera</strong>
       </div>
       <button onClick={startRecording}>Open Camera</button>
-      <button onClick={stopRecording}>Open Camera</button>
+      <button onClick={stopRecording}>Close Camera</button>
     </div>
   );
 };
