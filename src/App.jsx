@@ -1,6 +1,5 @@
 import "./App.css";
 
-import Camera from "./components/Camera";
 import CameraWithInput from "./components/CameraWithInput";
 import Location from "./components/Location";
 import NotificationPage from "./components/NotificationPage";
