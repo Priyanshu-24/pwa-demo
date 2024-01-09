@@ -16,7 +16,7 @@ const Location = () => {
           setLongitude(position.coords.longitude);
         },
         (error) => {
-          setLatitude("error in getCurrentPosition");
+          setLatitude(`error in getCurrentPosition": ${error}`);
         }
       );
     } else {
