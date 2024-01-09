@@ -16,11 +16,11 @@ const Location = () => {
           setLongitude(position.coords.longitude);
         },
         (error) => {
-          console.error("Error getting geolocation:", error);
+          setLatitude("error in getCurrentPosition");
         }
       );
     } else {
-      console.log("Geolocation is not available");
+      setLatitude("geolocation not present in navigator");
     }
   };
 
