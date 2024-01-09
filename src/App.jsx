@@ -11,7 +11,7 @@ function App() {
     <div className="container">
       <Location />
       <NotificationPage />
-      <Camera />
+      {/* <Camera /> */}
       <CameraWithInput />
     </div>
   );
