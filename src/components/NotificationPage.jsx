@@ -1,18 +1,25 @@
 const NotificationPage = () => {
-  const requestNotificationPermission = () => {
-    if ("Notification" in window) {
-      Notification.requestPermission().then((permission) => {
+  const registration = navigator.serviceWorker.getRegistration();
+  const sendNotification = async () => {
+    if (Notification.permission === "granted") {
+      showNotification();
+    } else {
+      if (Notification.permission !== "denied") {
+        const permission = await Notification.requestPermission();
+
         if (permission === "granted") {
           showNotification();
         }
-      });
-    } else {
-      console.log("Notifications not supported in this browser");
+      }
     }
   };
 
   const showNotification = () => {
-    new Notification("Got Notification from PWA");
+    if ("showNotification" in registration) {
+      registration.showNotification("Hello");
+    } else {
+      new Notification("Hello");
+    }
   };
 
   return (
@@ -20,9 +27,7 @@ const NotificationPage = () => {
       <div>
         <strong>Notification</strong>
       </div>
-      <button onClick={requestNotificationPermission}>
-        Enable Notifications
-      </button>
+      <button onClick={sendNotification}>Enable Notifications</button>
     </div>
   );
 };
