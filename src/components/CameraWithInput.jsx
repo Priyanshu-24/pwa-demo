@@ -2,14 +2,16 @@ const CameraWithInput = () => {
   return (
     <div>
       <div>
-        <strong>Camera</strong>
+        <strong>Start Camera</strong>
       </div>
-      <input
-        accept="image/*"
-        id="icon-button-file"
-        type="file"
-        capture="environment"
-      />
+      <div style={{ margin: "10px 0" }}>
+        <label>Photo</label>
+        <input accept="image/*" type="file" capture="environment" />
+      </div>
+      <div>
+        <label>Video</label>
+        <input accept="video/*" type="file" capture="environment" />
+      </div>
     </div>
   );
 };
