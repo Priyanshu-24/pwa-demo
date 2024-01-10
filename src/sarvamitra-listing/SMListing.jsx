@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const SMListing = ({ reqSM }) => {
   const [selectedImplement, setSelectedImplement] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSelectedImplement(e.target.value);
@@ -33,6 +36,10 @@ const SMListing = ({ reqSM }) => {
               <div
                 key={sarvamitra.id}
                 className="border border-black p-2 rounded w-full m-5 cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/implements/${sarvamitra.id}`);
+                }}
               >
                 <div className="text-lg font-semibold">{sarvamitra.name}</div>
                 <div className="font-semibold">
