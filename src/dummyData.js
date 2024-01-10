@@ -5,6 +5,7 @@ export const sarvamitraData = [
     latitude: 18.5,
     longitude: 73.7,
     radiusServing: 50,
+    equipments: { Tractor: 1000, Thresher: 2000, Drone: 3000, Rotavator: 7800 },
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const sarvamitraData = [
     latitude: 18.6,
     longitude: 73.8,
     radiusServing: 50,
+    equipments: { Tractor: 1200, Thresher: 2100, Drone: 2900, Rotavator: 7800 },
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const sarvamitraData = [
     latitude: 50,
     longitude: 22,
     radiusServing: 50,
+    equipments: ["Tractor", "Thresher", "Drone", "Rotavator"],
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export const sarvamitraData = [
     latitude: 50,
     longitude: 22,
     radiusServing: 50,
+    equipments: ["Tractor", "Thresher", "Drone", "Rotavator"],
   },
   {
     id: 5,
@@ -33,5 +37,6 @@ export const sarvamitraData = [
     latitude: 18.6,
     longitude: 73.9,
     radiusServing: 50,
+    equipments: { Tractor: 1300, Thresher: 1500, Drone: 2700, Rotavator: 6000 },
   },
 ];

@@ -6,6 +6,7 @@ import { sarvamitraData } from "../dummyData";
 
 const LandingPage = () => {
   const [filteredSM, setFilteredSM] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     checkGeolocation();
@@ -15,6 +16,10 @@ const LandingPage = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+          }, 2000);
           //   const lat = position.coords.latitude;
           //   const log = position.coords.longitude;
 
@@ -59,6 +64,14 @@ const LandingPage = () => {
       console.log("geolocation not present in navigator");
     }
   };
+
+  if (loading) {
+    return (
+      <div className="w-full h-full text-2xl font-semibold p-5">
+        Fetching Your Location...
+      </div>
+    );
+  }
 
   return <SMListing reqSM={filteredSM} />;
 };
