@@ -12,7 +12,7 @@ const Biometric = () => {
           challenge: dummyChallenge,
           rp: {
             name: "React App",
-            id: "localhost",
+            id: "priyanshu-pwa-demo.netlify.app",
           },
           user: {
             id: new Uint8Array([userId]),
@@ -40,8 +40,6 @@ const Biometric = () => {
 
   const verifyCredential = async () => {
     try {
-      const userId = "uniqueUserId123"; // Replace with your user ID logic
-
       const dummyChallenge = new Uint8Array([0x01, 0x02, 0x03, 0x04]); // Dummy challenge data
 
       const credential = await navigator.credentials.get({
