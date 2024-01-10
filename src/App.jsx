@@ -1,18 +1,17 @@
 import "./App.css";
 
-import CameraWithInput from "./components/CameraWithInput";
-import Location from "./components/Location";
-import NotificationPage from "./components/NotificationPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import LandingPage from "./sarvamitra-listing/LandingPage";
 import React from "react";
 
 function App() {
   return (
-    <div className="container">
-      <Location />
-      <NotificationPage />
-      {/* <Camera /> */}
-      <CameraWithInput />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
