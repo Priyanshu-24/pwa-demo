@@ -38,7 +38,7 @@ export const createCredential = async () => {
         challenge: dummyChallenge,
         rp: {
           name: "React App",
-          id: "localhost",
+          id: "priyanshu-pwa-demo.netlify.app",
         },
         user: {
           id: new Uint8Array([userId]),
