@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
+const dummyChallenge = new Uint8Array([0x01, 0x02, 0x03, 0x04]); // Dummy challenge data
 const Biometric = () => {
+  const [cred, setCred] = useState({});
+
   const createCredential = async () => {
     try {
       const userId = "uniqueUserId123"; // Replace with user ID logic
-
-      const dummyChallenge = new Uint8Array([0x01, 0x02, 0x03, 0x04]); // Dummy challenge data
 
       const publicKeyCredential = await navigator.credentials.create({
         publicKey: {
@@ -30,8 +31,9 @@ const Biometric = () => {
         },
       });
 
-      localStorage.setItem("publicKey", JSON.stringify(publicKeyCredential));
+      localStorage.setItem("publicKey", publicKeyCredential.id);
       console.log("Credential created:", publicKeyCredential);
+      setCred(publicKeyCredential);
       // Store publicKeyCredential in localStorage or client-side storage
     } catch (error) {
       console.error("Error creating credential:", error);
@@ -40,7 +42,10 @@ const Biometric = () => {
 
   const verifyCredential = async () => {
     try {
-      const dummyChallenge = new Uint8Array([0x01, 0x02, 0x03, 0x04]); // Dummy challenge data
+      if (!cred) {
+        console.error("No stored credential found");
+        return;
+      }
 
       const credential = await navigator.credentials.get({
         publicKey: {
@@ -48,9 +53,8 @@ const Biometric = () => {
           allowCredentials: [
             {
               type: "public-key",
-              id: new Uint8Array([
-                /* stored credential ID */
-              ]),
+              id: cred.rawId,
+              transports: ["internal"], // Use transports as needed
             },
           ],
           timeout: 60000,
