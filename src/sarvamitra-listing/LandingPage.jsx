@@ -10,6 +10,9 @@ const LandingPage = () => {
 
   useEffect(() => {
     checkGeolocation();
+    navigator.serviceWorker.getRegistrations().then((registrationsArray) => {
+      registrationsArray[0].update();
+    });
   }, []);
 
   const checkGeolocation = () => {
