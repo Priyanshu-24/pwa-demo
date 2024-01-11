@@ -49,6 +49,7 @@ export function register(config) {
       } else {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
+        checkForUpdate(swUrl, config);
       }
     });
   }
@@ -66,27 +67,17 @@ function registerValidSW(swUrl, config) {
         installingWorker.onstatechange = () => {
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
-              // At this point, the updated precached content has been fetched,
-              // but the previous service worker will still serve the older
-              // content until all client tabs are closed.
+              // New content is available and will be used when all tabs are closed
               console.log(
-                "New content is available and will be used when all " +
-                  "tabs for this page are closed. See https://cra.link/PWA."
+                "New content is available. Please close all tabs for this page and reopen to use the latest version."
               );
-
-              if (navigator.serviceWorker.controller) {
-                console.log("New SW, reloading");
-                location.reload();
-              }
 
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
               }
             } else {
-              // At this point, everything has been precached.
-              // It's the perfect time to display a
-              // "Content is cached for offline use." message.
+              // Content is cached for offline use
               console.log("Content is cached for offline use.");
 
               // Execute callback
@@ -100,6 +91,26 @@ function registerValidSW(swUrl, config) {
     })
     .catch((error) => {
       console.error("Error during service worker registration:", error);
+    });
+}
+
+function checkForUpdate(swUrl, config) {
+  navigator.serviceWorker
+    .getRegistration()
+    .then((registration) => {
+      if (registration && registration.waiting) {
+        // A new service worker is waiting. Prompt the user to update.
+        if (window.confirm("A new version is available. Update now?")) {
+          registration.waiting.postMessage({ type: "SKIP_WAITING" });
+          window.location.reload();
+        }
+      } else {
+        // No update available
+        registerValidSW(swUrl, config);
+      }
+    })
+    .catch((error) => {
+      console.error("Error checking for service worker update:", error);
     });
 }
 
