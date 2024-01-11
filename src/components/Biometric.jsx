@@ -33,6 +33,7 @@ const Biometric = () => {
 
       localStorage.setItem("publicKey", publicKeyCredential.id);
       console.log("Credential created:", publicKeyCredential);
+      alert("Credentials created");
       setCred(publicKeyCredential);
       // Store publicKeyCredential in localStorage or client-side storage
     } catch (error) {
@@ -62,6 +63,7 @@ const Biometric = () => {
       });
 
       console.log("Credential verified:", credential);
+      alert("Credentials Verified");
     } catch (error) {
       console.error("Error verifying credential:", error);
     }
