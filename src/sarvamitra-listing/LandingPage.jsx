@@ -68,7 +68,7 @@ const LandingPage = () => {
   if (loading) {
     return (
       <div className="w-full h-full text-2xl font-semibold p-5">
-        Fetching Your ..
+        Fetching Your Location..
       </div>
     );
   }
