@@ -8,11 +8,21 @@ const BookImpelment = () => {
   const navigate = useNavigate();
 
   const [render, setRender] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const verifyCredentials = async () => {
     if (localStorage.getItem("publicKey")) {
       let res = await verifyCredential();
+      const obj = { startDate, endDate, sm, equipment };
       if (res) {
+        if (localStorage.getItem("bookings")) {
+          let res = JSON.parse(localStorage.getItem("bookings"));
+          res = [...res, { ...obj }];
+          localStorage.setItem("bookings", JSON.stringify(res));
+        } else {
+          localStorage.setItem("bookings", JSON.stringify([{ ...obj }]));
+        }
         navigate(`/implement/${sm}/${equipment}/booked`);
       }
     } else {
@@ -35,6 +45,7 @@ const BookImpelment = () => {
         </label>
         <div class="mt-2">
           <input
+            onChange={(e) => setStartDate(e.target.value)}
             type="datetime-local"
             placeholder="Enter your name"
             className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -47,6 +58,7 @@ const BookImpelment = () => {
         </label>
         <div class="mt-2">
           <input
+            onChange={(e) => setEndDate(e.target.value)}
             type="datetime-local"
             placeholder="Enter your name"
             className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
