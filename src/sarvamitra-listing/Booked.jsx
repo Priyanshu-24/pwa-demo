@@ -6,6 +6,20 @@ const Booked = () => {
   const navigate = useNavigate();
   const [registration, setRegistration] = useState(null);
 
+  useEffect(() => {
+    const initializeServiceWorker = async () => {
+      try {
+        const reg = await navigator.serviceWorker.getRegistration();
+        console.log("Service Worker registration found:", reg);
+        setRegistration(reg);
+      } catch (error) {
+        console.error("Error getting Service Worker registration:", error);
+      }
+    };
+
+    initializeServiceWorker();
+  }, []);
+
   const sendNotification = async () => {
     if (!registration) {
       console.error("Service Worker registration not found");
@@ -27,8 +41,8 @@ const Booked = () => {
 
   const showNotification = () => {
     if (registration && "showNotification" in registration) {
-      registration.showNotification("Booking Confirmed", {
-        body: "Your order has been booked successfully!",
+      registration.showNotification("Order Confirmed", {
+        body: "Your implement has been booked successfully!",
       });
     } else {
       console.error(
@@ -36,23 +50,6 @@ const Booked = () => {
       );
     }
   };
-
-  useEffect(() => {
-    const initializeServiceWorker = async () => {
-      try {
-        const reg = await navigator.serviceWorker.getRegistration();
-        console.log("Service Worker registration found:", reg);
-        setRegistration(reg);
-        setTimeout(() => {
-          sendNotification();
-        }, 500);
-      } catch (error) {
-        console.error("Error getting Service Worker registration:", error);
-      }
-    };
-
-    initializeServiceWorker();
-  }, [sendNotification]);
 
   return (
     <div className="p-5">
