@@ -5,7 +5,6 @@ import { equipmentInfo } from "../dummyData";
 const DetailsPage = () => {
   const { sm, equipment } = useParams();
 
-  console.log(equipment, sm);
   const navigate = useNavigate();
   return (
     <div className="p-5">

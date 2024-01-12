@@ -8,6 +8,7 @@ import Booked from "./sarvamitra-listing/Booked";
 import DetailsPage from "./sarvamitra-listing/DetailsPage";
 import LandingPage from "./sarvamitra-listing/LandingPage";
 import Layout from "./components/Layout";
+import MyBooking from "./sarvamitra-listing/MyBooking";
 import React from "react";
 
 function App() {
@@ -52,6 +53,14 @@ function App() {
             element={
               <Layout>
                 <Booked />
+              </Layout>
+            }
+          />
+          <Route
+            path="/my-bookings"
+            element={
+              <Layout>
+                <MyBooking />
               </Layout>
             }
           />

@@ -6,7 +6,9 @@ import { useState } from "react";
 const BookImpelment = () => {
   const { sm, equipment } = useParams();
   const navigate = useNavigate();
+
   const [render, setRender] = useState(false);
+
   const verifyCredentials = async () => {
     if (localStorage.getItem("publicKey")) {
       let res = await verifyCredential();
@@ -28,10 +30,7 @@ const BookImpelment = () => {
       </h1>
 
       <div class="sm:col-span-3">
-        <label
-          for="first-name"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           Start Time
         </label>
         <div class="mt-2">
@@ -43,10 +42,7 @@ const BookImpelment = () => {
         </div>
       </div>
       <div class="sm:col-span-3">
-        <label
-          for="first-name"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           End Time
         </label>
         <div class="mt-2">
@@ -58,10 +54,7 @@ const BookImpelment = () => {
         </div>
       </div>
       <div class="sm:col-span-3">
-        <label
-          for="first-name"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           Name
         </label>
         <div class="mt-2">
@@ -73,10 +66,7 @@ const BookImpelment = () => {
         </div>
       </div>
       <div class="sm:col-span-3">
-        <label
-          for="first-name"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           Email
         </label>
         <div class="mt-2">
@@ -89,10 +79,7 @@ const BookImpelment = () => {
       </div>
 
       <div class="sm:col-span-3">
-        <label
-          for="first-name"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           Aadhaar Card Front
         </label>
         <div class="mt-2">
@@ -106,10 +93,7 @@ const BookImpelment = () => {
       </div>
 
       <div class="sm:col-span-3">
-        <label
-          for="first-name"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label className="block text-sm font-medium leading-6 text-gray-900">
           Aadhaar Card Back
         </label>
         <div class="mt-2">
