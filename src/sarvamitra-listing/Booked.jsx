@@ -12,6 +12,9 @@ const Booked = () => {
         const reg = await navigator.serviceWorker.getRegistration();
         console.log("Service Worker registration found:", reg);
         setRegistration(reg);
+        setTimeout(() => {
+          sendNotification();
+        }, 500);
       } catch (error) {
         console.error("Error getting Service Worker registration:", error);
       }
@@ -41,8 +44,8 @@ const Booked = () => {
 
   const showNotification = () => {
     if (registration && "showNotification" in registration) {
-      registration.showNotification("Hello", {
-        body: "This is a notification from your app.",
+      registration.showNotification("Booking Confirmed", {
+        body: "Your order has been booked successfully!",
       });
     } else {
       console.error(
