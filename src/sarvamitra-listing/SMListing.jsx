@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SMListing = ({ reqSM }) => {
+const SMListing = ({ reqSM, latitude, longitude }) => {
   const [selectedImplement, setSelectedImplement] = useState("");
 
   const navigate = useNavigate();
@@ -12,6 +12,11 @@ const SMListing = ({ reqSM }) => {
 
   return (
     <div className="p-5">
+      <div className="text-sm flex justify-between mb-4">
+        <div>Latitude: {latitude}</div>
+        <div>Longitude: {longitude}</div>
+      </div>
+
       <h1 className="text-2xl mb-4 font-semibold">
         {selectedImplement
           ? `All Nearby Sarvamitra with ${selectedImplement}`
@@ -21,7 +26,7 @@ const SMListing = ({ reqSM }) => {
         <select
           name="implement"
           id="implement"
-          className="w-full border border-black"
+          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
           onChange={handleChange}
         >
           <option value="">--Select--</option>

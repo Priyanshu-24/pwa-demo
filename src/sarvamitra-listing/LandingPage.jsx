@@ -7,6 +7,8 @@ import { sarvamitraData } from "../dummyData";
 const LandingPage = () => {
   const [filteredSM, setFilteredSM] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
 
   useEffect(() => {
     checkGeolocation();
@@ -20,11 +22,14 @@ const LandingPage = () => {
           setTimeout(() => {
             setLoading(false);
           }, 2000);
-          //   const lat = position.coords.latitude;
-          //   const log = position.coords.longitude;
+          const lat = position.coords.latitude;
+          const log = position.coords.longitude;
 
-          const lat = 18.5579709;
-          const log = 73.7830746;
+          setLatitude(lat);
+          setLongitude(log);
+
+          // const lat = 18.5579709;
+          // const log = 73.7830746;
 
           // getting servavle sarvamitra with sorting
           const sortedSM = sarvamitraData
@@ -73,7 +78,9 @@ const LandingPage = () => {
     );
   }
 
-  return <SMListing reqSM={filteredSM} />;
+  return (
+    <SMListing reqSM={filteredSM} latitude={latitude} longitude={longitude} />
+  );
 };
 
 export default LandingPage;
