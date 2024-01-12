@@ -22,14 +22,13 @@ const LandingPage = () => {
           setTimeout(() => {
             setLoading(false);
           }, 2000);
-          const lat = position.coords.latitude;
-          const log = position.coords.longitude;
+          // const lat = position.coords.latitude;
+          // const log = position.coords.longitude;
 
+          const lat = 18.5579709;
+          const log = 73.7830746;
           setLatitude(lat);
           setLongitude(log);
-
-          // const lat = 18.5579709;
-          // const log = 73.7830746;
 
           // getting servavle sarvamitra with sorting
           const sortedSM = sarvamitraData
