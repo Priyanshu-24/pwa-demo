@@ -7,19 +7,57 @@ import BookImpelment from "./sarvamitra-listing/BookImplement";
 import Booked from "./sarvamitra-listing/Booked";
 import DetailsPage from "./sarvamitra-listing/DetailsPage";
 import LandingPage from "./sarvamitra-listing/LandingPage";
+import Layout from "./components/Layout";
 import React from "react";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/implements/:id" element={<DetailsPage />} />
-        <Route path="/biometric" element={<Biometric />} />
-        <Route path="/implement/:id/book" element={<BookImpelment />} />
-        <Route path="/implement/:id/booked" element={<Booked />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <LandingPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/implements/:id"
+            element={
+              <Layout>
+                <DetailsPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/biometric"
+            element={
+              <Layout>
+                <Biometric />
+              </Layout>
+            }
+          />
+          <Route
+            path="/implement/:id/book"
+            element={
+              <Layout>
+                <BookImpelment />
+              </Layout>
+            }
+          />
+          <Route
+            path="/implement/:id/booked"
+            element={
+              <Layout>
+                <Booked />
+              </Layout>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
