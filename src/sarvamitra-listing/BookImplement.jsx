@@ -19,6 +19,8 @@ const BookImpelment = () => {
     }
   };
 
+  console.log(render);
+
   return (
     <div className="p-5 flex flex-col gap-7">
       <h1 className="text-2xl mb-4 font-semibold">Book Tractor</h1>
