@@ -7,7 +7,12 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="h-20 p-2 shadow-xl flex items-center">
-        <img src={Logo} className="w-32" onClick={() => navigate("/")} />
+        <img
+          src={Logo}
+          className="w-32"
+          onClick={() => navigate("/")}
+          alt="sarvagram"
+        />
       </div>
       {children}
     </>
