@@ -24,7 +24,7 @@ function App() {
             }
           />
           <Route
-            path="/implements/:id"
+            path="/implement/:sm/:equipment"
             element={
               <Layout>
                 <DetailsPage />
@@ -40,7 +40,7 @@ function App() {
             }
           />
           <Route
-            path="/implement/:id/book"
+            path="/implement/:sm/:equipment/book"
             element={
               <Layout>
                 <BookImpelment />
@@ -48,7 +48,7 @@ function App() {
             }
           />
           <Route
-            path="/implement/:id/booked"
+            path="/implement/:sm/:equipment/booked"
             element={
               <Layout>
                 <Booked />

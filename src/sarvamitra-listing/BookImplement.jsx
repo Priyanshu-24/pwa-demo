@@ -4,14 +4,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 const BookImpelment = () => {
-  const { id } = useParams();
+  const { sm, equipment } = useParams();
   const navigate = useNavigate();
   const [render, setRender] = useState(false);
   const verifyCredentials = async () => {
     if (localStorage.getItem("publicKey")) {
       let res = await verifyCredential();
       if (res) {
-        navigate(`/implement/${id}/booked`);
+        navigate(`/implement/${sm}/${equipment}/booked`);
       }
     } else {
       let res = await createCredential();
@@ -23,7 +23,9 @@ const BookImpelment = () => {
 
   return (
     <div className="p-5 flex flex-col gap-7">
-      <h1 className="text-2xl mb-4 font-semibold">Book Tractor</h1>
+      <h1 className="text-2xl mb-4 font-semibold">
+        Book {equipment} from {sm} Branch
+      </h1>
 
       <div class="sm:col-span-3">
         <label

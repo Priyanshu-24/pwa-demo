@@ -43,7 +43,9 @@ const SMListing = ({ reqSM, latitude, longitude }) => {
                 className="border border-black p-2 rounded w-full m-5 cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/implements/${sarvamitra.id}`);
+                  navigate(
+                    `/implement/${sarvamitra.name}/${selectedImplement}`
+                  );
                 }}
               >
                 <div className="text-lg font-semibold">{sarvamitra.name}</div>
