@@ -17,7 +17,7 @@ const DetailsPage = () => {
           <strong>{equipmentInfo[equipment].usedFor}</strong>
         </div>
         <div>
-          Purchased On SG on: <br />
+          Purchased by SG on: <br />
           <strong>{equipmentInfo[equipment].purchasedOn}</strong>
         </div>
         <div>
