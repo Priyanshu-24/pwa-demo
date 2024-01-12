@@ -1,6 +1,10 @@
 {
-  "short_name": "FMS",
   "name": "SarvaGram FMS",
+  "short_name": "fms",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "FMS",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "favicon.ico",
@@ -23,9 +27,6 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
+
 }
